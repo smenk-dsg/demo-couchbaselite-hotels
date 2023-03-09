@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
 import { Component } from '@angular/core';
 import { Hotel } from '../models/hotel';
 import { DatabaseService } from '../services/database.service';
@@ -10,39 +11,10 @@ import { DatabaseService } from '../services/database.service';
 export class Tab1Page {
   hotels: Hotel[] = [];
   hotelsDisplayed: Hotel[] = [];
-  toggleBookmarkFilter: boolean = false;
 
   constructor(private databaseService: DatabaseService) {}
 
   async ngOnInit() {
-    this.hotels = await this.databaseService.getHotels();
-    this.hotelsDisplayed = this.hotels;
-  }
-
-  async toggleBookmark(hotel: Hotel) {
-    hotel.bookmarked = !hotel.bookmarked;
-
-    if (hotel.bookmarked) {
-      await this.databaseService.bookmarkHotel(hotel.id);
-    }
-    else {
-      await this.databaseService.unbookmarkHotel(hotel.id);
-    }
-  }
-
-  async toggleShowBookmarks() {
-    this.toggleBookmarkFilter = !this.toggleBookmarkFilter;
-
-    if (this.toggleBookmarkFilter) {
-      const filtered = this.hotels.filter(h => h.bookmarked == true);
-      this.hotelsDisplayed = filtered;
-    }
-    else {
-      this.hotelsDisplayed = this.hotels;
-    }
-  }
-
-  async searchQueryChanged(hotelName) {
-    this.hotelsDisplayed = await this.databaseService.searchHotels(hotelName);
+    await this.databaseService.initializeDatabase();
   }
 }

@@ -1,7 +1,16 @@
 {
   "name": "demo-couchbaselite-hotels",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "enterprise": {
+      "keyId": 12276,
+      "productKey": "key_3673d6bbaacc401484b30f6eaaf2308a",
+      "appId": "08a703eb",
+      "orgId": "7f98438c-698a-4a3b-8c45-9328eda2ad9a",
+      "registries": [
+        "@ionic-enterprise;https://registry.ionicframework.com/"
+      ]
+    }
   },
   "type": "angular"
 }

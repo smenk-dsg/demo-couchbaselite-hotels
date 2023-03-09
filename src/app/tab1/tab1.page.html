@@ -13,27 +13,15 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-buttons collapse="true" (click)="toggleShowBookmarks()" slot="end">
-        <ion-button slot="end">
-          <ion-icon *ngIf="toggleBookmarkFilter" name="bookmarks" size="large" color="danger"></ion-icon>
-          <ion-icon *ngIf="!toggleBookmarkFilter" name="bookmarks-outline" size="large" color="danger"></ion-icon>
-        </ion-button>
-      </ion-buttons>
       <ion-title size="large">Hotels</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar placeholder="Search Name..." (ionChange)="searchQueryChanged($event.target.value)">
-  </ion-searchbar>
   <ion-list>
       <ion-item *ngFor="let hotel of hotelsDisplayed;">
         <ion-label>
-          <h2>{{ hotel.name }}</h2>
-          <p>{{ hotel.address }}</p>
-          <p>{{ hotel.phone }}</p>
+          <h2>{{ hotel.id }}</h2>
         </ion-label>
-        <ion-icon *ngIf="!hotel.bookmarked" name="bookmark-outline" (click)="toggleBookmark(hotel)"></ion-icon>
-        <ion-icon *ngIf="hotel.bookmarked" name="bookmark" color="danger" (click)="toggleBookmark(hotel)"></ion-icon>
       </ion-item>
     </ion-list>
   
